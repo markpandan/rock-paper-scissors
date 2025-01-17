@@ -3,86 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <script>
-      // Randomly generate the enemy's selection
-      function getComputerChoice(max = 3) {
-        switch (Math.floor(Math.random() * max)) {
-          case 0:
-            return "rock";
-          case 1:
-            return "paper";
-          case 2:
-            return "scissors";
-        }
-      }
-
-      // Get a user prompt response for rock, paper, scissors
-      function getHumanChoice() {
-        do {
-          let response = prompt(
-            "Play the game (rock, paper, scissors): "
-          ).toLowerCase();
-
-          if (
-            response == "rock" ||
-            response == "paper" ||
-            response == "scissors"
-          ) {
-            return response;
-          }
-        } while (true);
-      }
-
-      // Compare the response, and tally the score of who won
-      function playRound(humanSelection, computerSelection) {
-        if (humanSelection == computerSelection) {
-          console.log("It's a tie!");
-        } else if (
-          (humanSelection == "rock" && computerSelection == "scissors") ||
-          (humanSelection == "paper" && computerSelection == "rock") ||
-          (humanSelection == "scissors" && computerSelection == "paper")
-        ) {
-          console.log(
-            `You win! You chose ${humanSelection}, while your enemy chooses ${computerSelection}`
-          );
-          return "player";
-        } else {
-          console.log(
-            `You lose! You chose ${humanSelection}, while your enemy chooses ${computerSelection}`
-          );
-          return "computer";
-        }
-      }
-
-      // Play the game, and end if it reaches 5 rounds. Will repeat the round if the responses were a tie.
-      function playGame(rounds = 5) {
-        let humanScore = 0;
-        let computerScore = 0;
-
-        i = 0;
-        while (i < 5) {
-          console.log(`Round ${i + 1}`);
-          const humanSelection = getHumanChoice();
-          const computerSelection = getComputerChoice();
-
-          let play = playRound(humanSelection, computerSelection);
-
-          if (play == "player") humanScore++;
-          else if (play == "computer") computerScore++;
-          else continue;
-
-          i++;
-        }
-
-        if (humanScore > computerScore) console.log("Player Wins!");
-        else if (humanScore < computerScore) console.log("Computer Wins!");
-        else console.log("Game is a tie!");
-      }
-
-      playGame();
-    </script>
+    <div id="buttonGroup">
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
+    </div>
+    <div id="results">
+      <p id="playerScore">Player Score: <span>0</span></p>
+      <p id="computerScore">Computer Score: <span>0</span></p>
+    </div>
   </body>
 </html>

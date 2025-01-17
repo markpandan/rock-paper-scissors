@@ -22,13 +22,14 @@ buttonGroup.addEventListener("click", (e) => {
 });
 
 function checkResults(playerScore, computerScore) {
+  const rounds = 5;
   let p = document.createElement("p");
 
-  if (playerScore >= 5) {
+  if (playerScore >= rounds) {
     p.textContent = "Player Wins!";
     results.appendChild(p);
     clearResults();
-  } else if (computerScore >= 5) {
+  } else if (computerScore >= rounds) {
     p.textContent = "Computer Wins!";
     results.appendChild(p);
     clearResults();
